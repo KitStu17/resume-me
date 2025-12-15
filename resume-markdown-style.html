@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume - Your Name</title>
+        <link rel="stylesheet" href="resume-style.css">
+        <style>
+        /* 마크다운 스타일 추가 */
+        .resume-container {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        /* 마크다운 테이블 스타일 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        /* 코드 블록 스타일 */
+        code {
+            background-color: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        b {
+            color: #2563eb;
+        }
+
+        /* 프로젝트 서브 헤더 스타일 (STAR 방식) */
+        .project-sub-header {
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .project-sub-header h4 {
+            font-size: 1em;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 12px 0 8px 0;
+            padding-left: 8px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .project-sub-header p {
+            margin: 8px 0;
+            line-height: 1.6;
+            color: #374151;
+        }
+
+        /* 자기소개 섹션 스타일 */
+        .introduction-item p {
+            margin: 16px 0;
+            line-height: 1.8;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="resume-container">
+
+            <!-- Header Section -->
+            <div class="header">
+                <img src="ID_Photo.jpg" alt="Profile Photo"
+                    class="profile-photo">
+                <div class="header-info">
+                    <h1>박종현</h1>
+                    <p class="subtitle">백엔드 개발자</p>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <a href="mailto:kiri6077@naver.com">
+                    <span>📧</span> kiri6077@naver.com
+                </a>
+            </div>
+
+            <!-- Experience Section -->
+            <h2>Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>(주)제이니스</h3>
+                </div>
+                <div class="experience-meta">
+                    <span>💼 연구원 | 기업부설연구소</span>
+                    <span>📅 2024.06 - 2025.09</span>
+                </div>
+
+                <ul>
+                    <li><b>PostgreSQL</b> 성능 튜닝 및 장애 대응</li>
+                    <li><b>NextJS, Thymeleaf</b>를 활용한 운영자 대시보드 및 사용자 정보 페이지
+                        개발</li>
+                    <li>Gradle을 활용한 프로파일별 빌드 자동화 테스크 작성 <b>빌드 시간 단축(55초 →
+                            30초)</b></li>
+                    <li>레거시 Spring 프로젝트를 Spring Boot 기반으로 전환</li>
+                    <li>신규 서비스의 구독 관리, 결제, 환불 등 핵심 비즈니스 로직 개선</li>
+                    <li>정기결제 스케줄링 시스템 개선</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <!-- Project Section -->
+            <h2>Projects</h2>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Pine Works</h3>
+                </div>
+                <div class="project-meta">
+                    <span>📅 2024.06 - 2025.09</span>
+                </div>
+
+                <div class="project-sub-header">
+                    <h3>📌 PostgreSQL 성능 튜닝 및 장애 대응</h3>
+                    <h4><strong>문제 상황</strong></h4>
+                    <ul>
+                        <li>고객사에서 직원들의 근무 기록이 조회되지 않는다는 요청이 발생했고 <b>연결 시간을 30초로
+                                늘렸음에도 타임아웃이 발생</b>한 것을 확인했습니다.</li>
+                    </ul>
+
+                    <h4><strong>목표</strong></h4>
+                    <ul>
+                        <li>타임아웃이 발생하는 원인을 식별하여 쿼리를 최적화하고 API의 응답속도를 개선해야
+                            했습니다.</li>
+                    </ul>
+
+                    <h4><strong>행동</strong></h4>
+                    <ul>
+                        <li>EXPLAIN ANALYZE를 통해 실제 쿼리 실행 계획 분석을 진행했습니다.</li>
+                        <li>분석 결과 첫 WITH 문 내에서 TO_CHAR()를 사용하여 테이블 내의 <b>모든 날짜
+                                데이터에 포멧팅 처리, 인덱스 없는 컬럼을 사용한 JOIN</b>이 문제 원인이라는
+                            것을 알았습니다.</li>
+                        <li>해당 문제를 해결하기 위해 포멧팅을 Setter 메소드 내에서 하도록 변경, 특정 컬럼에
+                            인덱스를 추가 및 불필요한 DB의 내장 함수 삭제를 진행하였습니다.</li>
+                    </ul>
+
+                    <h4><strong>결과</strong></h4>
+                    <ul>
+                        <li>쿼리의 실행 시간을 <b>50초에서 5초</b>로 단축시킬 수 있었고, 쿼리의 코스트도
+                            <b>100만에서 3만</b>으로 감소시켰습니다.</li>
+                    </ul>
+                </div>
+
+                <br>
+
+                <div class="project-sub-header">
+                    <h3>📌 결제 관련 비즈니스 로직 리펙토링</h3>
+                    <h4><strong>문제 상황</strong></h4>
+                    <ul>
+                        <li>환불과 관련된 새로운 기능을 제작하며 금액 계산과 관련된 코드가 <b>하나의 서비스 메소드에서
+                                모두 처리</b>하고 있어 추가 기능 개발에 어려움을 겪고 있었습니다.</li>
+                    </ul>
+
+                    <h4><strong>목표</strong></h4>
+                    <ul>
+                        <li>금액 계산 관련 API에 따라 서비스 메소드의 분리가 필요했습니다.</li>
+                        <li>이후 추가 개발 시 동일한 문제가 발생하지 않도록 변경된 비즈니스 로직에 대한 매뉴얼이
+                            필요했습니다.</li>
+                    </ul>
+
+                    <h4><strong>행동</strong></h4>
+                    <ul>
+                        <li>리펙토링이 필요한 메소드를 호출하는 API를 확인하고 <b>최초가입, 서비스 변경 예약,
+                                서비스 즉시 변경</b> 세 가지로 분리하였습니다.</li>
+                        <li>interface, class를 활용하여 <b>팩토리 패턴</b>으로 코드를
+                            분리하였습니다.</li>
+                        <li>QA 서버에 해당 수정 사항을 테스트 후, 클래스 다이어그램을 사용하여 매뉴얼을
+                            작성하였습니다.</li>
+                    </ul>
+
+                    <h4><strong>결과</strong></h4>
+                    <ul>
+                        <li>1개의 메소드를 3개의 메소드로 분리하며 코드를 <b>약 15000줄에서 3000줄</b>로
+                            줄일 수 있었고 이후 사용 인원 변경 기능 개발에 필요한 시간을 단축시킬 수
+                            있었습니다.</li>
+                    </ul>
+                </div>
+
+                <br>
+
+                <div class="project-sub-header">
+                    <h3>📌 정기결제 스케줄링 시스템 개선</h3>
+                    <h4><strong>문제 상황</strong></h4>
+                    <ul>
+                        <li>결제 실패 시 <b>재시도 로직이 부재</b>하여 해당 일자의 정기결제 건 생성이 중단되는
+                            문제가 발생했습니다.</li>
+                        <li>스케줄러 장애 발생 시 <b>모니터링 및 알림 체계가 없어</b> 문제 인지가
+                            지연되었습니다.</li>
+                    </ul>
+
+                    <h4><strong>목표</strong></h4>
+                    <ul>
+                        <li>결제 실패 건에 대한 원인 파악 체계를 마련하여 장애 대응력을 강화해야 했습니다.</li>
+                        <li>스케줄러 실행 상태 및 결과를 실시간으로 모니터링할 수 있는 시스템을 구축해야
+                            했습니다.</li>
+                    </ul>
+
+                    <h4><strong>행동</strong></h4>
+                    <ul>
+                        <li>결제 실패 건에 대해 <b>@Transactional어노테이션 사용과 try-catch 예외
+                                처리</b>를 적용하여 실패 로그를
+                            기록하고, 후속 결제 건 처리가 계속되도록 개선했습니다.</li>
+                        <li>Logger의 토픽을 활용하여 <b>스케줄러 시작/종료/실패 로그를 별도 파일로
+                                분리</b>하도록 수정하였습니다.</li>
+                        <li>결제 처리 현황을 데이터베이스에 기록하고, 운영 대시보드에서 <b>실시간 진행률 및 상태를
+                                확인</b>할 수 있도록 구현했습니다.</li>
+                    </ul>
+
+                    <h4><strong>결과</strong></h4>
+                    <ul>
+                        <li>결제 실패 원인 파악 및 추적 체계를 구축하여 <b>장애 대응 시간을 단축</b>하고 시스템
+                            안정성을 개선했습니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Introduction Section -->
+            <h2>Introduction</h2>
+            <div class="introduction-item">
+
+                <p>안녕하세요. 2년차 백엔드 개발자 박종현입니다.</p>
+                <p>저는 사용자에게 필요한 데이터를 안정적이고 효율적으로 제공하여 서비스의 신뢰도를 높이는 것에 가치를 두고
+                    있으며, 쿼리 최적화와 코드 리펙토링을 통한 안정적인 서비스 운영에 중점을
+                    두고 있습니다.</p>
+                <p>문제의 원인을 분석하고, 개선을 통해 더 나은 서비스를 제공하는 방법을 꾸준히 탐구합니다.</p>
+                <p>팀원들과 함께 성장하고, 프로젝트를 능동적으로 이끌 수 있는 개발자로 성장하는 것이 목표입니다.</p>
+            </div>
+            <hr>
+
+            <!-- Two Column Section: Skills and Education -->
+            <div class="two-column">
+                <!-- Skills Column -->
+                <div class="skills-section">
+                    <h2>Skills</h2>
+
+                    <div class="skills-category">
+                        <h3>Back-End</h3>
+                        <p>Java / Spring, Spring MVC / WebFlux, Spring JDBC /
+                            JPA</p>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Front-End</h3>
+                        <p>Thymeleaf, JavaScript, NextJS</p>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Tools</h3>
+                        <p>IntelliJ, VSCode</p>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>DB/Cache</h3>
+                        <p>PostgreSQL, Redis, MySQL, MongoDB</p>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Collaborations</h3>
+                        <p>Github, Discord</p>
+                    </div>
+                </div>
+
+                <!-- Education Column -->
+                <div class="education-section">
+                    <h2>Education</h2>
+
+                    <div class="education-item">
+                        <h3>금오공과대학교</h3>
+                        <div class="education-meta">
+                            <span>🎓 학사(졸업)</span>
+                            <span>📅 2017.03. ~ 2024.02.</span>
+                        </div>
+                    </div>
+                    <h2>Certificate</h2>
+
+                    <div class="education-item">
+                        <h3>정보처리기사</h3>
+                        <div class="education-meta">
+                            <span>📅 2023.09.</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>SQLD</h3>
+                        <div class="education-meta">
+                            <span>📅 2021.04.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
